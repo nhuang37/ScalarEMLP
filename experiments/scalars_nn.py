@@ -106,7 +106,22 @@ class EquivariancePermutationLayer(nn.Module):
         n_layers, 
         layer_norm, 
     ):
-        super(self.__class__, self).__init__()
+        '''
+        f_Mij: 
+        f_Mii:
+        f_Mrij:
+        f_Mrii:
+        f_Mmij:
+        f_Mmii:
+        f_Mmimj:
+        f_Mmimi:
+        f_Iii:
+        f_Iij:
+        f_Imij:
+        f_Imii:
+        In paper: eqn (5) - (9) total 12 MLPs? correspondence?
+        '''
+        super(self.__class__, self).__init__() 
        
         self.f_Mij = BasicMLP(
             n_in=4, 
@@ -202,7 +217,7 @@ class EquivariancePermutationLayer(nn.Module):
         self.n_in = n_in
        
     def forward(self, x): 
-        scalars, x = x
+        scalars, x = x  #shape 
         
         ## Indentity matrix 
         inputIij = torch.cat(
